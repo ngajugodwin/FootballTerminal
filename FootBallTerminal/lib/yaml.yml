@@ -1,0 +1,6 @@
+api:
+  api_key: "512b99e3264840528bd4e04c0153545c"
+  base_url: "http://api.football-data.org/v2/"
+  end_point:
+    competitions:
+      matches: "matches"
