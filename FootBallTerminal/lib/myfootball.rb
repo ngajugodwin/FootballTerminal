@@ -1,19 +1,10 @@
-require 'rubygems'
-require 'pry'
-require 'rainbow'
-require 'terminal-table'
-#require './lib/config'
-require 'yaml'
-require 'http'
-
 class MyFootball
-
   def initialize(matches = {})
     @matches = matches
   end
 
-  def getNewAPI
-    ya = YAML.load_file('yaml.yml')
+  def get_new_API
+    ya = YAML.load(ERB.new(File.read('./lib/yaml.yml')).result)
     key = ya["api"]["api_key"]
     base_url = ya["api"]["base_url"]
     end_point = ya["api"]["end_point"]["competitions"]["matches"]
@@ -22,13 +13,13 @@ class MyFootball
     JSON.parse response.body.to_s
   end
 
-  def storeData
-    @matches = getNewAPI
+  def store_data
+    @matches = get_new_API
   end
 
-  def showInfo
+  def show_info
     rows = []
-    storeData["matches"].each_with_index do |match, i|
+    store_data["matches"].each_with_index do |match, i|
       home = match["awayTeam"]["name"]
       away = match["homeTeam"]["name"]
       scoreHome = match["score"]["fullTime"]["homeTeam"]
@@ -41,6 +32,3 @@ class MyFootball
     return
   end
 end
-
-f= MyFootball.new
-puts f.showInfo
