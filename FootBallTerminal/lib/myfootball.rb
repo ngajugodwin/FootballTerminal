@@ -3,10 +3,6 @@ class MyFootball
     @matches = matches
   end
 
-  def true?
-    true
-  end
-
   def get_new_API
     ya = YAML.load(ERB.new(File.read('./lib/config.yml')).result)
     key = ya["api"]["api_key"]
