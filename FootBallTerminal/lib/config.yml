@@ -1,0 +1,6 @@
+api:
+  api_key: <%= ENV["API_KEY"]%>
+  base_url: "http://api.football-data.org/v2/"
+  end_point:
+    competitions:
+      matches: "matches"
