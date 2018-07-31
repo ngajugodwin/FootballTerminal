@@ -26,10 +26,11 @@ class MyFootball
       scoreAway = match["score"]["fullTime"]["awayTeam"]
       rows << ["#{i+1}", "#{home}", "#{scoreHome} - #{scoreAway}", "#{away}"]
     end
-    table = Terminal::Table.new (
+    table = Terminal::Table.new(
       :headings => ['S/N', 'Home Team', 'Score', 'Away Team'],
       :rows => rows,
-      :title => "Live Scores")
+      :title => "Live Scores"
+    )
     puts table
     return
   end
